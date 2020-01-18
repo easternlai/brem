@@ -1,6 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
-    var Author = sequelize.define("usersGroups", {
-      
+    var userGroups = sequelize.define("usersGroups", {
+         
+        usersID: DataTypes.INTEGER,
+        groupsID: DataTypes.INTEGER    
 
     });
-}
+};
