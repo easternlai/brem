@@ -1,4 +1,5 @@
-//Authentication, Passport.js login/sign up forms
+//XXXXXXXXXXXXXXXXX___AUTHENTICATION_XXXXXXXXXXXXXXXXXX, 
+//Passport.js login/sign up forms
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var db = require("../models");
@@ -45,4 +46,5 @@ passport.deserializeUser(function(user,cb)  {
 
 //export passport file
 module.exports = passport;
+//XXXXXXXXXXXXXXXXX___END OF AUTHENTICATION_XXXXXXXXXXXXXXXXXX, 
 
