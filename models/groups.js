@@ -1,9 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
-    var Groups = sequelize.define("Groups", {
+    var Group = sequelize.define("Group", {
       
-      groupName: DataTypes.STRING,
-      proposedFood: DataTypes.STRING
+      name: DataTypes.STRING
+
     });
 
+    Group.associate = function(models) {
+      // Associating Group with Posts
+      // When an Group is deleted, also delete any associated Posts
+      Group.hasMany(models.Post, {
+        onDelete: "cascade"
+      });
+    };
+
+
+    return Group;
   };
 
