@@ -34,6 +34,7 @@ require("./routes/html-routes.js")(app);
 // require("./routes/joingroup-api-routes.js")(app);
 require("./routes/login-api-routes.js")(app);
 require("./routes/signup-api-routes.js")(app);
+require("./routes/createLunch-api-routes.js")(app);
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {

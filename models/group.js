@@ -1,6 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     var Group = sequelize.define("Group", {
-      name: DataTypes.STRING
+      title: DataTypes.STRING,
+      body: DataTypes.STRING,
+      schedule: DataTypes.STRING,
+      people: DataTypes.STRING,
+      category: DataTypes.STRING
       //add stuff here
     });
     Group.associate = function(models) {
