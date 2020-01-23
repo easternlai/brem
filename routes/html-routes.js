@@ -28,6 +28,10 @@ module.exports = function(app){
     app.get("/viewAllLunch", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/viewAllLunch.html"));
       });
+
+      app.get("/selectLunchToJoin", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/selectLunchToJoin.html"));
+      });
     
     
 };
