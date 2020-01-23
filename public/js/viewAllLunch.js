@@ -60,7 +60,9 @@ $(document).ready(function() {
       deleteBtn.text("x");
       deleteBtn.addClass("delete btn btn-danger");
       var editBtn = $("<button>");
+      var joinBtn = $("<button>");
       editBtn.text("EDIT");
+      joinBtn.text("JOIN");
       editBtn.addClass("edit btn btn-default");
       var newPostTitle = $("<h2>");
       var newPostDate = $("<small>");
@@ -79,7 +81,7 @@ $(document).ready(function() {
       var newPostBody = $("<p>");
       newPostTitle.text(post.title + " ");
       newPostSchedule.text("Proposed lunch time is: " + post.schedule);
-      newPostPeople.text("People plan to attend the lunch: " + post.people);
+      newPostPeople.text("Name of the restaurant: " + post.people);
       newPostBody.text(post.body);
       var formattedDate = new Date(post.createdAt);
       formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
@@ -87,6 +89,7 @@ $(document).ready(function() {
       newPostTitle.append(newPostDate);
       newPostCardHeading.append(deleteBtn);
       newPostCardHeading.append(editBtn);
+      newPostCardHeading.append(joinBtn);
       newPostCardHeading.append(newPostTitle);
       newPostCardHeading.append(newPostSchedule);
       newPostCardHeading.append(newPostPeople);
