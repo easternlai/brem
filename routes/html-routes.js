@@ -1,13 +1,27 @@
-// Dependencies
-// =============================================================
 var path = require("path");
 
-module.exports = function(app) {
-// index route loads view.html
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
-  });
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-// Routes
-// =============================================================
+module.exports = function(app){
+    app.get("/", function(req, res){
+
+        if(req.user){
+            res.redirect("/home");
+        }
+        res.sendFile(path.join(__dirname, "../public/signup.html"));
+    });
+    app.get("/login", function(req, res){
+        if(req.user){
+            res.redirect("/home");
+        }
+        res.sendFile(path.join(__dirname, "../public/login.html"));
+    });
+
+    app.get("/home", isAuthenticated, function (req, res){
+        res.sendFile(path.join(__dirname, "../public/home.html"));
+    });
+
+    
+    
 };
+
