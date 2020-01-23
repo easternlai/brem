@@ -1,30 +1,42 @@
-// Server.js - This file is the initial starting point for the Node/Express server.
-//
-// ******************************************************************************
-// *** Dependencies
-// =============================================================
+//NPM packages
 var express = require("express");
+var session = require("express-session");
+var passport = require("./config/passport");
 
-// Sets up the Express App
-// =============================================================
-var app = express();
+//Ports
 var PORT = process.env.PORT || 8080;
-// Requiring our models for syncing
 var db = require("./models");
-// Sets up the Express app to handle data parsing
+
+//Creating express
+var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Static directory
 app.use(express.static("public"));
-// Routes
-// =============================================================
-require("./routes/creategroup-api-routes.js")(app);
-require("./routes/joingroup-api-routes.js")(app);
+
+//Passport Sessions
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Routes
+
+app.post("/api/signup", function(req,res){
+  console.log("test signup-api");
+  db.User.create({
+      email: req.body.email,
+      password: req.body.password
+  }).then(function(){
+      res.redirect(307, "/api/login");
+  });
+});
 require("./routes/html-routes.js")(app);
-// Syncing our sequelize models and then starting our Express app
-// =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+// require("./routes/creategroup-api-routes.js")(app);
+// require("./routes/joingroup-api-routes.js")(app);
+require("./routes/login-api-routes.js")(app);
+require("./routes/signup-api-routes.js")(app);
+
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
