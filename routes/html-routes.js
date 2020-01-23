@@ -25,6 +25,9 @@ module.exports = function(app){
         res.sendFile(path.join(__dirname, "../public/createLunch.html"));
       });
 
+    app.get("/viewAllLunch", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/viewAllLunch.html"));
+      });
     
     
 };
