@@ -1,16 +1,16 @@
 $(document).ready(function() {
     // Gets an optional query string from our url (i.e. ?post_id=23)
-    //var url = window.location.search;
-    //var postId;
+    var url = window.location.search;
+    var postId;
     // Sets a flag for whether or not we're updating a post to be false initially
-    //var updating = false;
+    var updating = false;
   
     // If we have this section in our url, we pull out the post id from the url
     // In localhost:8080/cms?post_id=1, postId is 1
-    //if (url.indexOf("?post_id=") !== -1) {
-    //  postId = url.split("=")[1];
-    //  getPostData(postId);
-    //}
+    if (url.indexOf("?post_id=") !== -1) {
+      postId = url.split("=")[1];
+      getPostData(postId);
+    }
   
     // Getting jQuery references to the post body, title, form, and category select
     var bodyInput = $("#body");
@@ -56,21 +56,21 @@ $(document).ready(function() {
     }
   
     // Gets post data for a post if we're editing
-    //function getPostData(id) {
-    //  $.get("/api/groups/" + id, function(data) {
-    //    if (data) {
-    //      // If this post exists, prefill our cms forms with its data
-    //      titleInput.val(data.title);
-    //      bodyInput.val(data.body);
-    //      scheduleInput.val(data.schedule),
-    //      peopleInput.val(data.people),
-    //      postCategorySelect.val(data.category);
-    //      // If we have a post with this id, set a flag for us to know to update the post
-    //      // when we hit submit
-    //      updating = true;
-    //    }
-    //  });
-    //}
+    function getPostData(id) {
+      $.get("/api/groups/" + id, function(data) {
+        if (data) {
+          // If this post exists, prefill our cms forms with its data
+          titleInput.val(data.title);
+          bodyInput.val(data.body);
+          scheduleInput.val(data.schedule),
+          peopleInput.val(data.people),
+          postCategorySelect.val(data.category);
+          // If we have a post with this id, set a flag for us to know to update the post
+          // when we hit submit
+          updating = true;
+        }
+      });
+    }
   
     // Update a given post, bring user to the blog page when done
     //function updatePost(post) {
