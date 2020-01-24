@@ -5,7 +5,12 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        name: DataTypes.STRING
+        title: DataTypes.STRING,
+        body: {
+          type: DataTypes.TEXT,
+          allowNull: false,
+          len: [1]
+        }
     });
 
     userGroup.associate = function(models) {

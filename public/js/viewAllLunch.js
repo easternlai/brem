@@ -5,6 +5,7 @@ $(document).ready(function() {
     // Click events for the edit and delete buttons
     $(document).on("click", "button.delete", handlePostDelete);
     $(document).on("click", "button.edit", handlePostEdit);
+    $(document).on("click", "button.join", handlePostJoin);
     postCategorySelect.on("change", handleCategoryChange);
     var posts;
   
@@ -64,8 +65,10 @@ $(document).ready(function() {
       editBtn.text("EDIT");
       joinBtn.text("JOIN");
       editBtn.addClass("edit btn btn-default");
+      joinBtn.addClass("join btn btn-default");
       var newPostTitle = $("<h2>");
       var newPostDate = $("<small>");
+      var newPostBody = $("<h5>");
       var newPostSchedule = $("<h5>");
       var newPostPeople = $("<h5>");
       var newPostCategory = $("<h5>");
@@ -80,8 +83,9 @@ $(document).ready(function() {
       newPostCardBody.addClass("card-body");
       var newPostBody = $("<p>");
       newPostTitle.text(post.title + " ");
+      newPostBody.text("Proposed food is: " + post.body);
       newPostSchedule.text("Proposed lunch time is: " + post.schedule);
-      newPostPeople.text("Name of the restaurant: " + post.people);
+      newPostPeople.text("Created by: " + post.people);
       newPostBody.text(post.body);
       var formattedDate = new Date(post.createdAt);
       formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
@@ -91,6 +95,7 @@ $(document).ready(function() {
       newPostCardHeading.append(editBtn);
       newPostCardHeading.append(joinBtn);
       newPostCardHeading.append(newPostTitle);
+      newPostCardHeading.append(newPostBody);
       newPostCardHeading.append(newPostSchedule);
       newPostCardHeading.append(newPostPeople);
       newPostCardHeading.append(newPostCategory);
@@ -121,6 +126,16 @@ $(document).ready(function() {
       window.location.href = "/createLunch?post_id=" + currentPost.id;
     }
   
+       // This function handles Join
+    function handlePostJoin() {
+        var currentPost = $(this)
+          .parent()
+          .parent()
+          .data("post");
+        window.location.href = "/selectLunchToJoin?group_id=" + currentPost.id;
+      }
+
+
     // This function displays a message when there are no posts
     function displayEmpty() {
       blogContainer.empty();

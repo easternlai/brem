@@ -41,18 +41,20 @@ $(document).ready(function() {
   
       // If we're updating a post run updatePost to update a post
       // Otherwise run submitPost to create a whole new post
-      //if (updating) {
-      //  newPost.id = postId;
-      //  updatePost(newPost);
-      //}
-      //else {
+      if (updating) {
+        newPost.id = postId;
+        updatePost(newPost);
+      }
+      else {
         submitGroup(newPost);
-      //}
+      }
     });
   
     // Submits a new post and brings user to blog page upon completion
     function submitGroup(Group) {
-      $.post("/api/groups/", Group);
+      $.post("/api/groups/", Group).then(function() {
+        window.location.href = "/viewAllLunch";
+      });
     }
   
     // Gets post data for a post if we're editing
@@ -73,15 +75,15 @@ $(document).ready(function() {
     }
   
     // Update a given post, bring user to the blog page when done
-    //function updatePost(post) {
-    //  $.ajax({
-    //    method: "PUT",
-    //    url: "/api/groups",
-    //    data: post
-    //  })
-    //    .then(function() {
-    //      window.location.href = "/blog";
-    //    });
-    //}
+    function updatePost(post) {
+      $.ajax({
+        method: "PUT",
+        url: "/api/groups",
+        data: post
+      })
+        .then(function() {
+          window.location.href = "/viewAllLunch";
+        });
+    }
   });
   

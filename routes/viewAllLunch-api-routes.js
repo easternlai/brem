@@ -35,4 +35,18 @@ app.get("/api/groups/", function(req, res) {
         res.json(dbPost);
       });
   });
+
+
+
+    // DELETE route for deleting posts
+    app.delete("/api/groups/:id", function(req, res) {
+      db.Group.destroy({
+        where: {
+          id: req.params.id
+        }
+      })
+        .then(function(dbPost) {
+          res.json(dbPost);
+        });
+    });
 };

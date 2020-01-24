@@ -10,7 +10,7 @@ $(document).ready(function() {
     // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
     var url = window.location.search;
     var postId;
-    var authorId;
+    var groupId;
     // Sets a flag for whether or not we're updating a post to be false initially
     var updating = false;
   
@@ -21,8 +21,8 @@ $(document).ready(function() {
       getPostData(postId, "post");
     }
     // Otherwise if we have an author_id in our url, preset the author select box to be our Author
-    else if (url.indexOf("?author_id=") !== -1) {
-      authorId = url.split("=")[1];
+    else if (url.indexOf("?group_id=") !== -1) {
+      groupId = url.split("=")[1];
     }
   
     // Getting the authors, and their posts
@@ -59,8 +59,8 @@ $(document).ready(function() {
   
     // Submits a new post and brings user to blog page upon completion
     function submitPost(post) {
-      $.post("/api/groups", post, function() {
-        window.location.href = "/blog";
+      $.post("/api/userGroups", post, function() {
+        window.location.href = "/viewAllLunch";
       });
     }
   
@@ -69,10 +69,10 @@ $(document).ready(function() {
       var queryUrl;
       switch (type) {
       case "post":
-        queryUrl = "/api/groups/" + id;
+        queryUrl = "/api/userGroups/" + id;
         break;
       case "author":
-        queryUrl = "/api/groups/" + id;
+        queryUrl = "/api/userGroups/" + id;
         break;
       default:
         return;
@@ -83,7 +83,7 @@ $(document).ready(function() {
           // If this post exists, prefill our cms forms with its data
           titleInput.val(data.title);
           bodyInput.val(data.body);
-          authorId = data.GroupId || data.id;
+          groupId = data.GroupId || data.id;
           // If we have a post with this id, set a flag for us to know to update the post
           // when we hit submit
           updating = true;
@@ -110,14 +110,14 @@ $(document).ready(function() {
       console.log(rowsToAdd);
       console.log(authorSelect);
       authorSelect.append(rowsToAdd);
-      authorSelect.val(authorId);
+      authorSelect.val(groupId);
     }
   
     // Creates the author options in the dropdown
-    function createAuthorRow(author) {
+    function createAuthorRow(group) {
       var listOption = $("<option>");
-      listOption.attr("value", author.id);
-      listOption.text(author.name);
+      listOption.attr("value", group.id);
+      listOption.text(group.title);
       return listOption;
     }
   
@@ -125,12 +125,12 @@ $(document).ready(function() {
     function updatePost(post) {
       $.ajax({
         method: "PUT",
-        url: "/api/groups",
+        url: "/api/userGroups",
         data: post
       })
         .then(function() {
-          //window.location.href = "/blog";
-          console.log("updated");
+          window.location.href = "/vewAllLunch";
+          //console.log("updated");
         });
     }
   });
