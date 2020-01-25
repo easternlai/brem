@@ -3,6 +3,7 @@ $(document).ready(function() {
     // Getting jQuery references to the post body, title, form, and author select
     var bodyInput = $("#body");
     var titleInput = $("#title"); //title is user name in the lunchApp
+    //var userInput = $("#user");
     var cmsForm = $("#cms");
     var authorSelect = $("#author"); //author is group in lunchApp
     // Adding an event listener for when the form is submitted
@@ -32,6 +33,7 @@ $(document).ready(function() {
     function handleFormSubmit(event) {
       event.preventDefault();
       // Wont submit the post if we are missing a body, title, or author
+      //if (!titleInput.val().trim() || !bodyInput.val().trim() || !authorSelect.val()) {
       if (!titleInput.val().trim() || !bodyInput.val().trim() || !authorSelect.val()) {
         return;
       }

@@ -72,18 +72,22 @@ $(document).ready(function() {
       var newPostCardHeading = $("<div>");
       newPostCardHeading.addClass("card-header");
       var deleteBtn = $("<button>");
-      deleteBtn.text("x");
+      deleteBtn.text("Leave this lunch");
       deleteBtn.addClass("delete btn btn-danger");
       var editBtn = $("<button>");
       //editBtn.text("EDIT");
       //editBtn.addClass("edit btn btn-info");
-      var newPostTitle = $("<h2>");
+      var newPostTitle = $("<h3>");
       var newPostDate = $("<small>");
       var newPostAuthor = $("<h5>");
       newPostAuthor.text("Going to: " + post.Group.title + " on: " + post.Group.schedule);
       
+      deleteBtn.css({
+        float: "right"
+      });
+
       newPostAuthor.css({
-        float: "right",
+        float: "left",
         color: "blue",
         "margin-top":
         "-10px"
@@ -96,7 +100,7 @@ $(document).ready(function() {
       //newPostDate.text(formattedDate);
       newPostTitle.append(newPostDate);
       newPostCardHeading.append(deleteBtn);
-      newPostCardHeading.append(editBtn);
+      //newPostCardHeading.append(editBtn);
       newPostCardHeading.append(newPostTitle);
       newPostCardHeading.append(newPostAuthor);
       newPostCardBody.append(newPostBody);

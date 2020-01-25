@@ -54,7 +54,7 @@ $(document).ready(function() {
     // This function constructs a post's HTML
     function createNewRow(post) {
       var newPostCard = $("<div>");
-      newPostCard.addClass("card");
+      newPostCard.addClass("card col-md-4");
       var newPostCardHeading = $("<div>");
       newPostCardHeading.addClass("card-header");
       var deleteBtn = $("<button>");
@@ -66,19 +66,23 @@ $(document).ready(function() {
       joinBtn.text("JOIN");
       editBtn.addClass("edit btn btn-default");
       joinBtn.addClass("join btn btn-default");
-      var newPostTitle = $("<h2>");
+      var newPostTitle = $("<h3>");
       var newPostDate = $("<small>");
-      var newPostBody = $("<h5>");
-      var newPostSchedule = $("<h5>");
-      var newPostPeople = $("<h5>");
-      var newPostCategory = $("<h5>");
+      var newPostBody = $("<h6>");
+      var newPostSchedule = $("<h6>");
+      var newPostPeople = $("<h6>");
+      var newPostCategory = $("<h7>");
       newPostCategory.text("Status is: " + post.category);
       newPostCategory.css({
         float: "right",
-        "font-weight": "700",
-        "margin-top":
-        "-15px"
+        "font-weight": "500",
+        "margin-top": "-15px"
       });
+
+      newPostCard.css({
+        float: "left"
+      });
+
       var newPostCardBody = $("<div>");
       newPostCardBody.addClass("card-body");
       var newPostBody = $("<p>");
