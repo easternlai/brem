@@ -1,7 +1,7 @@
 var bcrypt = require("bcryptjs");
 
 module.exports = function (sequelize, DataTypes) {
-    var User = sequelize.define("User", {
+    var Users = sequelize.define("Users", {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -15,15 +15,39 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
     });
-    User.prototype.validPassword = function(password) {
+    Users.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.password);
     };    
-    User.addHook("beforeCreate", function(user) {
-        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    Users.addHook("beforeCreate", function(users) {
+        users.password = bcrypt.hashSync(users.password, bcrypt.genSaltSync(10), null);
     });
 
+    // Users.associate = function(models) {
+    //     Users.belongsTo(models.Orgs, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
+
+    Users.associate = function(models) {
+
+        Users.belongsTo(models.Orgs, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+        Users.belongsToMany(models.Lunches, {
+          through: 'userGroups',
+          as:'lunches',
+          foreignKey: 'lunchesId' 
+        });
+      };
+
+
     
-    return User;
+    return Users;
 };
 
 

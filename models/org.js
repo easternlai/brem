@@ -1,8 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
-    var Org = sequelize.define("Org", {
+    var Orgs = sequelize.define("Orgs", {
       name: DataTypes.STRING
       //add stuff here
     });
    
-    return Org;
+    Orgs.associate = function(models){
+      Orgs.hasMany(models.Users, {
+        onDelete:"cascade"
+      });
+    };
+
+    Orgs.associate = function(models){
+      Orgs.hasMany(models.Lunches, {
+        onDelete:"cascade"
+      });
+    };
+
+    return Orgs;
   };

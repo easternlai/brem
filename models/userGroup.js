@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var userGroup = sequelize.define("userGroup", {
+    var userGroups = sequelize.define("userGroups", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -8,16 +8,16 @@ module.exports = function (sequelize, DataTypes) {
         name: DataTypes.STRING
     });
 
-    userGroup.associate = function(models) {
+    userGroups.associate = function(models) {
         // We're saying that a Post should belong to an Author
         // A Post can't be created without an Author due to the foreign key constraint
-        userGroup.belongsTo(models.Group, {
+        userGroups.belongsTo(models.Lunches, {
           foreignKey: {
             allowNull: false
           }
         });
       };
-    return userGroup;
+    return userGroups;
 
 };
 
