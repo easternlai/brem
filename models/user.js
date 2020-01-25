@@ -23,27 +23,19 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     // Users.associate = function(models) {
+
     //     Users.belongsTo(models.Orgs, {
     //         foreignKey: {
     //             allowNull: false
     //         }
     //     });
-    // };
 
-    Users.associate = function(models) {
-
-        Users.belongsTo(models.Orgs, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-
-        Users.belongsToMany(models.Lunches, {
-          through: 'userGroups',
-          as:'lunches',
-          foreignKey: 'lunchesId' 
-        });
-      };
+    //     Users.belongsToMany(models.Lunches, {
+    //       through: 'userGroups',
+    //       as:'lunches',
+    //       foreignKey: 'lunchesId' 
+    //     });
+    //   };
 
 
     

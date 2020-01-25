@@ -9,7 +9,8 @@ $(document).ready(function(){
         event.preventDefault();
         var userData = {
             email: emailInput.val().trim(),
-            password: passwordInput.val().trim()
+            password: passwordInput.val().trim(),
+          
         };
         console.log(userData);
         if (!userData.email || !userData.password){

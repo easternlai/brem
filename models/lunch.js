@@ -12,19 +12,19 @@ module.exports = function(sequelize, DataTypes) {
     //   };
 
 
-    Lunches.associate = function(models) {
-      Lunches.belongsTo(models.Orgs, {
-          foreignKey: {
-              allowNull: false
-          }
-      });
+    // Lunches.associate = function(models) {
+    //   Lunches.belongsTo(models.Orgs, {
+    //       foreignKey: {
+    //           allowNull: false
+    //       }
+    //   });
 
-      Lunches.belongsToMany(models.Users, {
-        through: 'userGroups',
-        as:'users',
-        foreignKey: 'userId' 
-      });
-    };
+    //   Lunches.belongsToMany(models.Users, {
+    //     through: 'userGroups',
+    //     as:'users',
+    //     foreignKey: 'userId' 
+    //   });
+    // };
    
     return Lunches;
   };
