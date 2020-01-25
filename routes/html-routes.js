@@ -36,6 +36,10 @@ module.exports = function(app){
       app.get("/activity", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/activity.html"));
       });
+
+      app.get("/main", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/main.html"));
+      });
     
 };
 
