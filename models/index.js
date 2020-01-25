@@ -31,9 +31,6 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-// User.belongsToMany(Group, { as: 'Group', through: { model: userGroup, unique: false }, foreignKey: 'user_id' });
-// Group.belongsToMany(User, { as: 'User', through: { model: userGroup, unique: false }, foreignKey: 'group_id' });
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

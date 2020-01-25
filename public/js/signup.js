@@ -1,5 +1,3 @@
-console.log("test");
-
 $(document).ready(function(){
     var loginForm = $("form.login");
     var emailInput = $("#email-input");
@@ -9,9 +7,9 @@ $(document).ready(function(){
         event.preventDefault();
         var userData = {
             email: emailInput.val().trim(),
-            password: passwordInput.val().trim()
+            password: passwordInput.val().trim(),
+            OrgId: 1
         };
-        console.log(userData);
         if (!userData.email || !userData.password){
             return;
         }

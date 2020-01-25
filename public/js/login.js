@@ -7,15 +7,16 @@ $(document).ready(function(){
     loginForm.on("submit", function(event){
         event.preventDefault();
         var userData = {
+            OrgId: 1,
             email: emailInput.val().trim(),
             password: passwordInput.val().trim()
         };
-        
-        console.log(userData);
+        console.log("test");
+
         if (!userData.email || !userData.password){
             return;
         }
-        console.log(userData);
+   \
         $.post("/api/login", userData).then(function(){
             window.location.replace("/home");
         });

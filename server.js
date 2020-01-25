@@ -30,8 +30,8 @@ app.post("/api/signup", function(req,res){
   });
 });
 require("./routes/html-routes.js")(app);
-// require("./routes/creategroup-api-routes.js")(app);
-// require("./routes/joingroup-api-routes.js")(app);
+require("./routes/creategroup-api-routes.js")(app);
+require("./routes/joingroup-api-routes.js")(app);
 require("./routes/login-api-routes.js")(app);
 require("./routes/signup-api-routes.js")(app);
 

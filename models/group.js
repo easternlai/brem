@@ -1,15 +1,24 @@
-module.exports = function(sequelize, DataTypes) {
-    var Group = sequelize.define("Group", {
-      name: DataTypes.STRING
-      //add stuff here
+module.exports = function (sequelize, DataTypes) {
+  var Lunches = sequelize.define("Lunches", {
+    name: DataTypes.STRING,
+    restaurant: DataTypes.STRING
+    //add stuff here
+  });
+
+  Lunches.associate = function (models) {
+    Lunches.belongsTo(models.Orgs, {
+      foreignKey: {
+        allowNull: true,
+        defaultValue: 1
+
+      }
     });
-    Group.associate = function(models) {
-        // Associating Author with Posts
-        // When an Author is deleted, also delete any associated Posts
-        Group.hasMany(models.userGroup, {
-          onDelete: "cascade"
-        });
-      };
-   
-    return Group;
+
+    Lunches.belongsToMany(models.User, {
+      through: 'userLunches',
+      as: 'user',
+      foreignKey: 'userId'
+    });
   };
+  return Lunches;
+};
