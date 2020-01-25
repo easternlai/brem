@@ -2,6 +2,8 @@
 var db = require("../models");
 
 module.exports = function(app) {
+
+    //test
     
     app.post("/api/signup", function(req,res){
         console.log("test signup-api");
