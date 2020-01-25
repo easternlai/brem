@@ -30,11 +30,11 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
 
-        User.belongsToMany(models.Lunches, {
-            through: 'userLunches',
-            as: 'lunches',
-            foreignKey: 'lunchId'
-        });
+    //     User.belongsToMany(models.Lunches, {
+    //         through: 'userLunches',
+    //         as: 'lunches',
+    //         foreignKey: 'lunchId'
+    //     });
     };
 
 

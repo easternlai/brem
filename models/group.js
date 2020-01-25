@@ -14,11 +14,11 @@ module.exports = function (sequelize, DataTypes) {
       }
     });
 
-    Lunches.belongsToMany(models.User, {
-      through: 'userLunches',
-      as: 'user',
-      foreignKey: 'userId'
-    });
-  };
+  //   Lunches.belongsToMany(models.User, {
+  //     through: 'userLunches',
+  //     as: 'user',
+  //     foreignKey: 'userId'
+  //   });
+ };
   return Lunches;
 };
