@@ -33,6 +33,9 @@ module.exports = function(app){
         res.sendFile(path.join(__dirname, "../public/selectLunchToJoin.html"));
       });
     
+      app.get("/activity", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/activity.html"));
+      });
     
 };
 
