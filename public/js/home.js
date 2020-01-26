@@ -4,6 +4,7 @@ $(document).ready(function(){
     var restaurantInput = $("#restaurant-name-input");
 
     createForm.on("submit", function(event){
+        
         event.preventDefault();
 
         var lunchData = {
@@ -15,8 +16,32 @@ $(document).ready(function(){
             return;
         }
 
-        console.log("test: "+ lunchData.name + lunchData.restaurant);
+        console.log("create: "+ lunchData.name + lunchData.restaurant);
         $.post("/api/create-lunch", lunchData).then(function(){
+            lunchInput.val("");
+            restaurantInput.val("");
+        });
+    });
+});
+
+
+$(document).ready(function(){
+    
+    var joinForm = $("form.join");
+    var userIdInput = $("#userid-input");
+    var groupIdInput = $("#groupid-input");
+
+    joinForm.on("submit", function(event){
+        
+        event.preventDefault();
+
+        var joinData = {
+            name: userIdInput + groupIdInput,
+            userxId: userIdInput.val(),
+            lunchxId: groupIdInput.val()
+        };
+    
+        $.post("/api/join-lunch", joinData).then(function(){
             lunchInput.val("");
             restaurantInput.val("");
         });
