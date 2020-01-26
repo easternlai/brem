@@ -16,7 +16,7 @@ $(document).ready(function() {
       //if (categoryString) {
       //  categoryString = "/category/" + categoryString;
       //}
-      $.get("/api/groups", function(data) {
+      $.get("/api/create-lunch/", function(data) {
         console.log("Posts", data);
         posts = data;
         if (!posts || !posts.length) {
@@ -32,7 +32,7 @@ $(document).ready(function() {
     function deletePost(id) {
       $.ajax({
         method: "DELETE",
-        url: "/api/groups/" + id
+        url: "/api/create-lunch/" + id
       })
         .then(function() {
           //getPosts(postCategorySelect.val());
@@ -91,7 +91,7 @@ $(document).ready(function() {
       newPostTitle.text(post.name + " ");
       newPostBody.text("Proposed food is: " + post.restaurant);
       newPostSchedule.text("Lunch ID: " + post.id);
-      newPostPeople.text("Created by: " + post.people);
+      newPostPeople.text("Created at: " + post.createdAt);
       newPostBody.text(post.body);
       var formattedDate = new Date(post.createdAt);
       //formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
