@@ -21,22 +21,6 @@ module.exports = function (sequelize, DataTypes) {
     User.addHook("beforeCreate", function (user) {
         user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
     });
-    User.associate = function (models) {
-
-        User.belongsTo(models.Orgs, {
-            foreignKey: {
-                allowNull: true,
-                defaultValue: 1
-            }
-        });
-
-        User.belongsToMany(models.Lunches, {
-            through: 'userLunches',
-            as: 'lunches',
-            foreignKey: 'lunchId'
-        });
-    };
-
 
     return User;
 };

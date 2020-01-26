@@ -5,20 +5,5 @@ module.exports = function (sequelize, DataTypes) {
     //add stuff here
   });
 
-  Lunches.associate = function (models) {
-    Lunches.belongsTo(models.Orgs, {
-      foreignKey: {
-        allowNull: true,
-        defaultValue: 1
-
-      }
-    });
-
-    Lunches.belongsToMany(models.User, {
-      through: 'userLunches',
-      as: 'user',
-      foreignKey: 'userId'
-    });
-  };
   return Lunches;
 };

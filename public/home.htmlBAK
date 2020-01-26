@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <!-- <div class="bg-dark collapse show" id="navbarHeader" style>
+        <div class="bg-dark collapse show" id="navbarHeader" style>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
@@ -43,12 +43,12 @@
                     </div>
                 </div>
             </div>
-        </div> -->
-        <!-- <div class="navbar navbar-dark bg-dark box-shadow">
+        </div>
+        <div class="navbar navbar-dark bg-dark box-shadow">
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     <!-- logo -->
-                    <!-- <stong>FoodApp</stong>
+                    <stong>FoodApp</stong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggler="collapse"
                     data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="true"
@@ -56,7 +56,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-        </div> --> 
+        </div>
     </header>
     <main role="main">
         <section class="jumbotron text-center">
@@ -72,32 +72,24 @@
                 </p>
                 <p>
                     <a href="#" class="btn btn-primary my-2">View more groups</a>
-                    <a href="#" class="btn btn-secondary my-2">Sign-up</a>
+                    <a href="#" class="btn btn-secondary my-2 creat-group-btn">create group</a>
+
+                    <form class="create">
+                        <label for="">Lunch name</label>
+                        <input type="text" name="create-group-form" id="lunch-name-input" placeholder="Lunch Name">
+                        <label for="">Restaurant Name</label>
+                        <input type="text" name="create-group-form" id="restaurant-name-input" placeholder="Restaurant Name">
+                        <button type="submit" class="create-submit">Create!</button>
+                    </form>
                 </p>
             </div>
         </section>
-        <form align="center" class="create">
-            <label for="">Lunch name</label>
-            <input type="text" name="create-group-form" id="lunch-name-input" placeholder="Lunch Name">
-            <label for="">Restaurant Name</label>
-            <input type="text" name="create-group-form" id="restaurant-name-input" placeholder="Restaurant Name">
-            <button type="submit" class="create-submit">Create!</button>
-        </form>
-
-        <form align="center" class="join">
-            <label for="">user id</label>
-            <input type="text" name="join-group-form" id="userid-input" placeholder="user id">
-            <label for="">group id</label>
-            <input type="text" name="join-group-form" id="groupid-input" placeholder="group id">
-            <button type="submit" class="join-submit">Join!</button>
-        </form>
-
-        <!-- <div class="album py-5 bg-light">
+        <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            
+                            <!-- img -->
                             <div class="card-body">
                                 <p class="card-text">
                                     "Tincidunt
@@ -116,7 +108,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            
+                            <!-- img -->
                             <div class="card-body">
                                 <p class="card-text">
                                     "Tincidunt
@@ -135,7 +127,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            
+                            <!-- img -->
                             <div class="card-body">
                                 <p class="card-text">
                                     "Tincidunt
@@ -154,7 +146,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            
+                            <!-- img -->
                             <div class="card-body">
                                 <p class="card-text">
                                     "Tincidunt
@@ -173,7 +165,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            
+                            <!-- img -->
                             <div class="card-body">
                                 <p class="card-text">
                                     "Tincidunt
@@ -187,53 +179,34 @@
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            
-                            <div class="card-body">
-                                <p class="card-text">
-                                    "Tincidunt
-                                    tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac
-                                    tortor
-                                    dignissim convallis aenean.
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12 blog-container"></div>
-                            </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <!-- img -->
+                            <div class="card-body">
+                                <p class="card-text">
+                                    "Tincidunt
+                                    tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac
+                                    tortor
+                                    dignissim convallis aenean.
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div> -->
-        <div class="album py-5 bg-light">            
-        <div class="container"></div>
-        <div class="row">
-            
-            <div class="col-md-12 blog-container box-shadow"></div>
-            
         </div>
-        </div>
-        </div>
-        
-
     </main>
-    <!-- <footer class="text-muted">
+    <footer class="text-muted">
         <div class="container">
             <p class="float-right">
                 <a href="#">Back to the top</a>
@@ -242,24 +215,22 @@
                 FoodApp is a great tool for your team. Buy FoodApp Pro today!
             </p>
         </div>
-    </footer> -->
+    </footer>
 
 
 
     <!-- <script src="javascript/javascript.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-        <script src="js/UICard.js" type="text/javascript"></script>
-        <script src="js/home.js" type="text/javascript"></script>
-
-        
-
+    <script type="text/javascript" src="js/home.js"></script>
 </body>
 
 </html>
