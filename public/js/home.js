@@ -1,3 +1,15 @@
+var currentUser;
+
+$.get("/user", function(data) {
+            console.log(data);
+        }).then(function(userInfo){
+            currentUser = userInfo;
+        });
+
+       
+    
+
+
 $(document).ready(function(){
     var createForm = $("form.create");
     var lunchInput = $("#lunch-name-input");
@@ -16,7 +28,6 @@ $(document).ready(function(){
             return;
         }
 
-        console.log("create: "+ lunchData.name + lunchData.restaurant);
         $.post("/api/create-lunch", lunchData).then(function(){
             lunchInput.val("");
             restaurantInput.val("");
@@ -28,20 +39,20 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-    
+
     var joinForm = $("form.join");
-    var userIdInput = $("#userid-input");
     var groupIdInput = $("#groupid-input");
 
     joinForm.on("submit", function(event){
-        
+        console.log(currentUser.id);
         event.preventDefault();
 
         var joinData = {
-            name: userIdInput + groupIdInput,
-            userxId: userIdInput.val(),
+            name: currentUser.email,
+            userxId: currentUser.id,
             lunchxId: groupIdInput.val()
         };
+
     
         $.post("/api/join-lunch", joinData).then(function(){
             userIdInput.val("");
@@ -49,3 +60,4 @@ $(document).ready(function(){
         });
     });
 });
+
