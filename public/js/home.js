@@ -42,8 +42,8 @@ $(document).ready(function(){
         };
     
         $.post("/api/join-lunch", joinData).then(function(){
-            lunchInput.val("");
-            restaurantInput.val("");
+            userIdInput.val("");
+            groupIdInput.val("");
         });
     });
 });
