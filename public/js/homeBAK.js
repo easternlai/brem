@@ -21,8 +21,6 @@ $(document).ready(function(){
             lunchInput.val("");
             restaurantInput.val("");
         });
-
-        window.location.href = "/home";
     });
 });
 
@@ -44,8 +42,8 @@ $(document).ready(function(){
         };
     
         $.post("/api/join-lunch", joinData).then(function(){
-            userIdInput.val("");
-            groupIdInput.val("");
+            lunchInput.val("");
+            restaurantInput.val("");
         });
     });
 });

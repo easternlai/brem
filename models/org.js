@@ -4,17 +4,17 @@ module.exports = function (sequelize, DataTypes) {
     //add stuff here
   });
 
-  Orgs.associate = function (models) {
-    Orgs.hasMany(models.User, {
-      onDelete: "cascade"
-    });
-  };
+  // Orgs.associate = function (models) {
+  //   Orgs.hasMany(models.User, {
+  //     onDelete: "cascade"
+  //   });
+  // };
 
-  Orgs.associate = function (models) {
-    Orgs.hasMany(models.Lunches, {
-      onDelete: "cascade"
-    });
-  };
+  // Orgs.associate = function (models) {
+  //   Orgs.hasMany(models.Lunches, {
+  //     onDelete: "cascade"
+  //   });
+  // };
 
   return Orgs;
 };
