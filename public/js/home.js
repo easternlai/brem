@@ -2,6 +2,8 @@ $(document).ready(function(){
     var createForm = $("form.create");
     var lunchInput = $("#lunch-name-input");
     var restaurantInput = $("#restaurant-name-input");
+    var hostInput = $("#restaurant-host-input");
+    var typeInput = $("#lunch-type-input");
 
     createForm.on("submit", function(event){
         
@@ -9,7 +11,10 @@ $(document).ready(function(){
 
         var lunchData = {
             name: lunchInput.val().trim(),
-            restaurant: restaurantInput.val().trim()
+            restaurant: restaurantInput.val().trim(),
+            host: hostInput.val().trim(),
+            type: typeInput.val().trim()
+
         };
 
         if(!lunchData.name || !lunchData.restaurant){
@@ -20,6 +25,8 @@ $(document).ready(function(){
         $.post("/api/create-lunch", lunchData).then(function(){
             lunchInput.val("");
             restaurantInput.val("");
+            hostInput.val("");
+            typeInput.val("");
         });
 
         window.location.href = "/home";
