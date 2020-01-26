@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var currentUser;
 
 $.get("/user", function(data) {
@@ -7,14 +6,8 @@ $.get("/user", function(data) {
             currentUser = userInfo;
         });
 
-       
     
-
-
 $(document).ready(function(){
-=======
-$(document).ready(function () {
->>>>>>> 075cfd4e3ca273aeb43baffa2747be3b116b71c2
     var createForm = $("form.create");
     var lunchInput = $("#lunch-name-input");
     var restaurantInput = $("#restaurant-name-input");
@@ -37,12 +30,8 @@ $(document).ready(function () {
             return;
         }
 
-<<<<<<< HEAD
-        $.post("/api/create-lunch", lunchData).then(function(){
-=======
         console.log("create: " + lunchData.name + lunchData.restaurant);
         $.post("/api/create-lunch", lunchData).then(function () {
->>>>>>> 075cfd4e3ca273aeb43baffa2747be3b116b71c2
             lunchInput.val("");
             restaurantInput.val("");
             hostInput.val("");
@@ -54,22 +43,13 @@ $(document).ready(function () {
 });
 
 
-<<<<<<< HEAD
-$(document).ready(function(){
-=======
 $(document).ready(function () {
->>>>>>> 075cfd4e3ca273aeb43baffa2747be3b116b71c2
 
     var joinForm = $("form.join");
     var groupIdInput = $("#groupid-input");
 
-<<<<<<< HEAD
-    joinForm.on("submit", function(event){
-        console.log(currentUser.id);
-=======
     joinForm.on("submit", function (event) {
 
->>>>>>> 075cfd4e3ca273aeb43baffa2747be3b116b71c2
         event.preventDefault();
 
         var joinData = {
@@ -78,20 +58,13 @@ $(document).ready(function () {
             lunchxId: groupIdInput.val()
         };
 
-<<<<<<< HEAD
-    
-        $.post("/api/join-lunch", joinData).then(function(){
-=======
         $.post("/api/join-lunch", joinData).then(function () {
->>>>>>> 075cfd4e3ca273aeb43baffa2747be3b116b71c2
             userIdInput.val("");
             groupIdInput.val("");
         });
     });
 });
 
-<<<<<<< HEAD
-=======
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -118,4 +91,3 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
->>>>>>> 075cfd4e3ca273aeb43baffa2747be3b116b71c2
