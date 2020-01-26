@@ -109,12 +109,39 @@ $(document).ready(function () {
     newPostCardHeading.append(newPostSchedule);
     newPostCardHeading.append(newPostHost);
     newPostCardHeading.append(newPostType);
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + post.type + "&limit=1&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4";
+    console.log("newposttype: " + post.type);
     newPostCardHeading.append(newPostPeople);
     //newPostCardHeading.append(newPostCategory);
     newPostCardBody.append(newPostBody);
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
     newPostCard.data("post", post);
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+       
+      // create a var to hold an image
+      var image = $("<img>").attr("src", response.data[0].images.fixed_height_downsampled.url);
+      //var image = $("<img>").attr("src", response.data[0].images.original.url);
+
+
+      console.log(response.data[0].images.original.url);
+      //add a class to each gif
+      // image.addClass("gifImage");
+      // //add a attribute to each gif
+      // image.attr("thisImageURL", response.data[limit].images.original.url);
+      //display the image to a DOM location
+      //$("#movies-view").prepend(image);
+      newPostCardBody.append(image);
+      
+    });
+
+      
+
+
     return newPostCard;
   }
 

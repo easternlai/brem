@@ -7,5 +7,12 @@ module.exports = function (sequelize, DataTypes) {
     //add stuff here
   });
 
+  Lunches.associate = function(models) {
+    
+    Lunches.hasMany(models.userLunches, {
+      onDelete: "cascade"
+    });
+  };
+
   return Lunches;
 };
