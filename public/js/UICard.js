@@ -181,7 +181,7 @@ $(document).ready(function () {
     blogContainer.empty();
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html("Nvigate <a href='/createLunch'>here</a> to create a new lunch meet!");
+    messageH2.html("Create a lunch to start!");
     blogContainer.append(messageH2);
   }
 
