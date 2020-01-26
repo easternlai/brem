@@ -22,14 +22,14 @@ module.exports = function(app) {
     });
 
 
-    app.get("/api/groups/", function(req, res) {
+    app.get("/api/create-lunch/", function(req, res) {
         db.Lunches.findAll({})
           .then(function(dbPost) {
             res.json(dbPost);
           });
       });
 
-      app.get("/api/groups/:id", function(req, res) {
+      app.get("/api/create-lunch/:id", function(req, res) {
         db.Lunches.findOne({
           where: {
             id: req.params.id
@@ -40,7 +40,7 @@ module.exports = function(app) {
           });
       });
 
-    app.delete("/api/groups/:id", function(req, res) {
+    app.delete("/api/create-lunch/:id", function(req, res) {
         db.Lunches.destroy({
           where: {
             id: req.params.id
