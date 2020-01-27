@@ -55,8 +55,7 @@ $(document).ready(function () {
         };
 
         $.post("/api/join-lunch", joinData).then(function () {
-            userIdInput.val("");
-            groupIdInput.val("");
+            console.log(joinData);
         });
     });
 });
