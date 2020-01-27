@@ -22,16 +22,14 @@ module.exports = function(app){
         
     });
 
-<<<<<<< HEAD
     app.get("/user", function(req, res){
         res.send(req.user);
     });
-=======
+
     // app.get("/selectLunchToJoin", function(req, res) {
     //     res.sendFile(path.join(__dirname, "../public/selectLunchToJoin.html"));
     //   });
     
->>>>>>> 446ed7ea92c8b24e3068103e97e40e597d51d961
     
 };
 
