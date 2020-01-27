@@ -1,4 +1,8 @@
 /* The Modal (background) */
+img {
+  width: 100%;
+}
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -35,3 +39,58 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  customNav {
+    opacity: 0.9;
+    background-color: rgb(202, 54, 75)!important;
+}
+#navbarToggleExternalContent {
+    background-color: #CA364B!important;
+}
+.navText {
+    color: rgb(205, 234, 239) !important
+}
+.imgBlock {
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    background-size: 300px 200px;
+}
+.customJumbo {
+    color: rgb(205, 234, 239) !important;
+    background-color: #56565E;
+    opacity: 0.9;
+}
+.jumbotron-heading {
+    color: rgb(202, 54, 75)
+}
+.btn-secondary {
+    background-color: rgb(202, 54, 75);
+    border-color: #CA364B;
+}
+.btn-secondary:hover {
+    background-color: rgb(202, 54, 75);
+    border-color: #CA364B;
+}
+.text-muted {
+    color: white!important;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(202, 54, 75);
+    opacity: 0.9;
+    color: white;
+}
+.footerText {
+    margin-top: 10px;
+}
+.navbar-toggler-icon {
+    border-color: #CA364B;
+}
+.model-content {
+    background-color: rgb(202, 54, 75);
+}
+
+
