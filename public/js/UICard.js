@@ -12,9 +12,8 @@ $(document).ready(function () {
   //var postCategorySelect = $("#category");
   // Click events for the edit and delete buttons
   $(document).on("click", "button.delete", handlePostDelete);
- 
   //$(document).on("click", "button.edit", handlePostEdit);
-  //$(document).on("click", "button.join", handlePostJoin);
+  $(document).on("click", "button.join", handlePostJoin);  // *****************************
   //postCategorySelect.on("change", handleCategoryChange);
   var posts;
 
@@ -71,11 +70,11 @@ $(document).ready(function () {
     deleteBtn.text("x");
     deleteBtn.addClass("delete btn btn-danger");
     //var editBtn = $("<button>");
-    //var joinBtn = $("<button>");
+    var joinBtn = $("<button>");   // *********************
     //editBtn.text("EDIT");
-    //joinBtn.text("JOIN");
+    joinBtn.text("JOIN");   // *********************
     //editBtn.addClass("edit btn btn-default");
-    //joinBtn.addClass("join btn btn-default");
+    joinBtn.addClass("join btn btn-default");    // *********************
     var newPostTitle = $("<h3>");
     var newPostDate = $("<small>");
     var newPostBody = $("<h6>");
@@ -102,7 +101,7 @@ $(document).ready(function () {
     newPostBody.text("Proposed food is: " + post.restaurant);
     newPostSchedule.text("Lunch ID: " + post.id);
     newPostPeople.text("Created at: " + post.createdAt);
-    newPostHost.text("Host: " + currentUser.email);
+    newPostHost.text("Host: " + currentUser.name);
     newPostType.text("Type: " + post.type);
     newPostBody.text(post.body);
     var formattedDate = new Date(post.createdAt);
@@ -111,7 +110,7 @@ $(document).ready(function () {
     newPostTitle.append(newPostDate);
     newPostCardHeading.append(deleteBtn);
     //   newPostCardHeading.append(editBtn);
-    //   newPostCardHeading.append(joinBtn);
+      newPostCardHeading.append(joinBtn); // *********************
     newPostCardHeading.append(newPostTitle);
     newPostCardHeading.append(newPostBody);
     newPostCardHeading.append(newPostSchedule);
@@ -171,14 +170,24 @@ $(document).ready(function () {
   //   window.location.href = "/createLunch?post_id=" + currentPost.id;
   // }
 
-  // This function handles Join
-  // function handlePostJoin() {
-  //     var currentPost = $(this)
-  //       .parent()
-  //       .parent()
-  //       .data("post");
-  //     window.location.href = "/selectLunchToJoin?group_id=" + currentPost.id;
-  //   }
+// **************************************
+  function handlePostJoin() {
+      var currentPost = $(this)
+        .parent()
+        .parent()
+        .data("post");
+
+        var joinData = {
+          name: currentUser.email,
+          userxId: currentUser.id,
+          lunchxId: currentPost.id
+      };
+      // window.location.href = "/selectLunchToJoin?group_id=" + currentPost.id;
+      $.post("/api/join-lunch", joinData).then(function () {
+        console.log(joinData);
+    });
+
+    }
 
 
   // This function displays a message when there are no posts

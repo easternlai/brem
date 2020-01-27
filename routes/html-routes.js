@@ -26,10 +26,7 @@ module.exports = function(app){
         res.send(req.user);
     });
 
-    // app.get("/selectLunchToJoin", function(req, res) {
-    //     res.sendFile(path.join(__dirname, "../public/selectLunchToJoin.html"));
-    //   });
-    
+
     
 };
 

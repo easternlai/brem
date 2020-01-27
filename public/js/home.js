@@ -18,7 +18,7 @@ $(document).ready(function(){
         var lunchData = {
             name: lunchInput.val().trim(),
             restaurant: restaurantInput.val().trim(),
-            host: currentUser.email,
+            host: currentUser.name,
             type: typeInput.val().trim()
 
         };
@@ -55,8 +55,7 @@ $(document).ready(function () {
         };
 
         $.post("/api/join-lunch", joinData).then(function () {
-            userIdInput.val("");
-            groupIdInput.val("");
+            console.log(joinData);
         });
     });
 });
