@@ -101,7 +101,7 @@ $(document).ready(function () {
     newPostBody.text("Proposed food is: " + post.restaurant);
     newPostSchedule.text("Lunch ID: " + post.id);
     newPostPeople.text("Created at: " + post.createdAt);
-    newPostHost.text("Host: " + currentUser.email);
+    newPostHost.text("Host: " + currentUser.name);
     newPostType.text("Type: " + post.type);
     newPostBody.text(post.body);
     var formattedDate = new Date(post.createdAt);
