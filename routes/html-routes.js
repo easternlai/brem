@@ -19,6 +19,11 @@ module.exports = function(app){
 
     app.get("/home", isAuthenticated, function (req, res){
         res.sendFile(path.join(__dirname, "../public/home.html"));
+        
+    });
+
+    app.get("/user", function(req, res){
+        res.send(req.user);
     });
 
     // app.get("/selectLunchToJoin", function(req, res) {

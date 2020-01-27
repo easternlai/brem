@@ -14,7 +14,7 @@ $(document).ready(function(){
         if (!userData.email || !userData.password){
             return;
         }
-        $.post("/api/login", userData).then(function(){
+        $.post("/api/login", userData).then(function(data){
             window.location.replace("/home");
         });
 

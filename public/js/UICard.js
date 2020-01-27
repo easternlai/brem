@@ -1,10 +1,18 @@
+var currentUser;
+
+$.get("/user", function(data) {
+            currentUser = data;
+        });
+
+
 $(document).ready(function () {
-  // blogContainer holds all of our posts
-  var blogContainer = $(".blog-container");
+  // lunchContainer holds all of our posts
+  var lunchContainer = $(".lunch-container");
   //var boxshaddow = $(".box-shadow");
   //var postCategorySelect = $("#category");
   // Click events for the edit and delete buttons
   $(document).on("click", "button.delete", handlePostDelete);
+ 
   //$(document).on("click", "button.edit", handlePostEdit);
   //$(document).on("click", "button.join", handlePostJoin);
   //postCategorySelect.on("change", handleCategoryChange);
@@ -43,14 +51,14 @@ $(document).ready(function () {
   // Getting the initial list of posts
   getPosts();
   // InitializeRows handles appending all of our constructed post HTML inside
-  // blogContainer
+  // lunchContainer
   function initializeRows() {
-    blogContainer.empty();
+    lunchContainer.empty();
     var postsToAdd = [];
     for (var i = 0; i < posts.length; i++) {
       postsToAdd.push(createNewRow(posts[i]));
     }
-    blogContainer.append(postsToAdd);
+    lunchContainer.append(postsToAdd);
   }
 
   // This function constructs a post's HTML
@@ -94,7 +102,7 @@ $(document).ready(function () {
     newPostBody.text("Proposed food is: " + post.restaurant);
     newPostSchedule.text("Lunch ID: " + post.id);
     newPostPeople.text("Created at: " + post.createdAt);
-    newPostHost.text("Host: " + post.host);
+    newPostHost.text("Host: " + currentUser.email);
     newPostType.text("Type: " + post.type);
     newPostBody.text(post.body);
     var formattedDate = new Date(post.createdAt);
@@ -139,9 +147,6 @@ $(document).ready(function () {
       
     });
 
-      
-
-
     return newPostCard;
   }
 
@@ -178,11 +183,11 @@ $(document).ready(function () {
 
   // This function displays a message when there are no posts
   function displayEmpty() {
-    blogContainer.empty();
+    lunchContainer.empty();
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
     messageH2.html("Create a lunch to start!");
-    blogContainer.append(messageH2);
+    lunchContainer.append(messageH2);
   }
 
   // This function handles reloading new posts when the category changes

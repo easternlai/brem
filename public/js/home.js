@@ -1,8 +1,14 @@
-$(document).ready(function () {
+var currentUser;
+
+$.get("/user", function(data) {
+            currentUser = data;
+        });
+
+    
+$(document).ready(function(){
     var createForm = $("form.create");
     var lunchInput = $("#lunch-name-input");
     var restaurantInput = $("#restaurant-name-input");
-    var hostInput = $("#restaurant-host-input");
     var typeInput = $("#lunch-type-input");
 
     createForm.on("submit", function (event) {
@@ -12,7 +18,7 @@ $(document).ready(function () {
         var lunchData = {
             name: lunchInput.val().trim(),
             restaurant: restaurantInput.val().trim(),
-            host: hostInput.val().trim(),
+            host: currentUser.email,
             type: typeInput.val().trim()
 
         };
@@ -25,7 +31,6 @@ $(document).ready(function () {
         $.post("/api/create-lunch", lunchData).then(function () {
             lunchInput.val("");
             restaurantInput.val("");
-            hostInput.val("");
             typeInput.val("");
         });
 
@@ -37,7 +42,6 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     var joinForm = $("form.join");
-    var userIdInput = $("#userid-input");
     var groupIdInput = $("#groupid-input");
 
     joinForm.on("submit", function (event) {
@@ -45,8 +49,8 @@ $(document).ready(function () {
         event.preventDefault();
 
         var joinData = {
-            name: userIdInput + groupIdInput,
-            userxId: userIdInput.val(),
+            name: currentUser.email,
+            userxId: currentUser.id,
             lunchxId: groupIdInput.val()
         };
 
