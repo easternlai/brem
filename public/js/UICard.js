@@ -8,21 +8,15 @@ $.get("/user", function(data) {
 $(document).ready(function () {
   // lunchContainer holds all of our posts
   var lunchContainer = $(".lunch-container");
-  //var boxshaddow = $(".box-shadow");
-  //var postCategorySelect = $("#category");
   // Click events for the edit and delete buttons
   $(document).on("click", "button.delete", handlePostDelete);
   //$(document).on("click", "button.edit", handlePostEdit);
-  $(document).on("click", "button.join", handlePostJoin);  // *****************************
-  //postCategorySelect.on("change", handleCategoryChange);
+  $(document).on("click", "button.join", handlePostJoin);  
   var posts;
 
   // This function grabs posts from the database and updates the view
   function getPosts() {
-    //var categoryString = category || "";
-    //if (categoryString) {
-    //  categoryString = "/category/" + categoryString;
-    //}
+
     $.get("/api/create-lunch/", function (data) {
       console.log("Posts", data);
       posts = data;
@@ -62,89 +56,78 @@ $(document).ready(function () {
 
   // This function constructs a post's HTML
   function createNewRow(post) {
+    
     var newPostCard = $("<div>");
-    newPostCard.addClass("card col-md-4");
-    var newPostCardHeading = $("<div>");
-    newPostCardHeading.addClass("card-header");
-    var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
-    //var editBtn = $("<button>");
-    var joinBtn = $("<button>");   // *********************
-    //editBtn.text("EDIT");
-    joinBtn.text("JOIN");   // *********************
-    //editBtn.addClass("edit btn btn-default");
-    joinBtn.addClass("join btn btn-default");    // *********************
-    var newPostTitle = $("<h3>");
-    var newPostDate = $("<small>");
-    var newPostBody = $("<h6>");
-    var newPostHost = $("<h6>");
-    var newPostType = $("<h6>");
-    var newPostSchedule = $("<h6>");
-    var newPostPeople = $("<h6>");
-    //var newPostCategory = $("<h7>");
-    //newPostCategory.text("Status is: " + post.category);
-    //   newPostCategory.css({
-    //     float: "right",
-    //     "font-weight": "500",
-    //     "margin-top": "-15px"
-    //   });
-
-    newPostCard.css({
-      float: "left"
-    });
-
-    var newPostCardBody = $("<div>");
-    newPostCardBody.addClass("card-body");
-    var newPostBody = $("<p>");
-    newPostTitle.text(post.name + " ");
-    newPostBody.text("Proposed food is: " + post.restaurant);
-    newPostSchedule.text("Lunch ID: " + post.id);
-    newPostPeople.text("Created at: " + post.createdAt);
-    newPostHost.text("Host: " + currentUser.name);
-    newPostType.text("Type: " + post.type);
-    newPostBody.text(post.body);
-    var formattedDate = new Date(post.createdAt);
-    //formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
-    //newPostDate.text(formattedDate);
-    newPostTitle.append(newPostDate);
-    newPostCardHeading.append(deleteBtn);
-    //   newPostCardHeading.append(editBtn);
-      newPostCardHeading.append(joinBtn); // *********************
-    newPostCardHeading.append(newPostTitle);
-    newPostCardHeading.append(newPostBody);
-    newPostCardHeading.append(newPostSchedule);
-    newPostCardHeading.append(newPostHost);
-    newPostCardHeading.append(newPostType);
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + post.type + "&limit=1&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4";
-    console.log("newposttype: " + post.type);
-    newPostCardHeading.append(newPostPeople);
-    //newPostCardHeading.append(newPostCategory);
-    newPostCardBody.append(newPostBody);
-    newPostCard.append(newPostCardHeading);
-    newPostCard.append(newPostCardBody);
-    newPostCard.data("post", post);
+    var newImage;
+    
+    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + post.restaurant + "&location=94111";
 
     $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-       
-      // create a var to hold an image
-      var image = $("<img>").attr("src", response.data[0].images.fixed_height_downsampled.url);
-      //var image = $("<img>").attr("src", response.data[0].images.original.url);
+       url: myurl,
+       headers: {
+        'Authorization':'Bearer EGAEY_VMQ-b52IDl7iItiMgpKvRRphqB-cZRV4eRnlZIZ6fED9UV1WksLFEgUhVvwmNzlY_txJXVnHHPDSqjIUQ70KDTY_Ey6H5hQ6wNO6Gx6xZHh77oGU3fW3kuXnYx',
+    },
+       method: 'GET',
+       dataType: 'json',
+       success: function(data){
+                   newImage = $("<img>").attr("src", data.businesses[0].image_url);
+                   
+       }
+    }).then(function(data){
 
-
-      console.log(response.data[0].images.original.url);
-      //add a class to each gif
-      // image.addClass("gifImage");
-      // //add a attribute to each gif
-      // image.attr("thisImageURL", response.data[limit].images.original.url);
-      //display the image to a DOM location
-      //$("#movies-view").prepend(image);
-      newPostCardBody.append(image);
       
+      newPostCard.addClass("card col-md-4");
+      var newPostCardHeading = $("<div>");
+      newPostCardHeading.addClass("card-header");
+      var deleteBtn = $("<button>");
+      deleteBtn.text("x");
+      deleteBtn.addClass("delete btn btn-danger");
+      //var editBtn = $("<button>");
+      var joinBtn = $("<button>");   // *********************
+      //editBtn.text("EDIT");
+      joinBtn.text("JOIN");   // *********************
+      //editBtn.addClass("edit btn btn-default");
+      joinBtn.addClass("join btn btn-default");    // *********************
+      var newPostTitle = $("<h3>");
+      var newPostDate = $("<small>");
+      var newPostBody = $("<h6>");
+      var newPostHost = $("<h6>");
+      var newPostType = $("<h6>");
+      var newPostSchedule = $("<h6>");
+      var newPostPeople = $("<h6>");
+  
+      newPostCard.css({
+        float: "left"
+      });
+  
+      var newPostCardBody = $("<div>");
+      newPostCardBody.addClass("card-body");
+      var newPostBody = $("<p>");
+      newPostTitle.text(post.name + " ");
+      newPostBody.text("Rating: " + data.businesses[0].rating);
+      newPostSchedule.text("Restaurant: " + data.businesses[0].name);
+      newPostPeople.text("Created at: " + post.createdAt);
+      newPostHost.text("Host: " + currentUser.name);
+      newPostType.text("Type: " + post.type);
+      newPostBody.text(post.body);
+      newPostTitle.append(newPostDate);
+      newPostCardHeading.append(deleteBtn);
+      newPostCardHeading.append(joinBtn); 
+      newPostCardHeading.append(newPostTitle);
+      newPostCardHeading.append(newPostBody);
+      newPostCardHeading.append(newPostSchedule);
+      newPostCardHeading.append(newPostHost);
+      newPostCardHeading.append(newPostType);
+      newPostCardHeading.append(newPostPeople);
+      newPostCardBody.append(newPostBody);
+      newPostCard.append(newPostCardHeading);
+      newPostCard.append(newPostCardBody);
+      newPostCard.data("post", post);
+      newPostCardBody.append(newImage);
+      newImage.addClass("img-small");
+  
     });
+
 
     return newPostCard;
   }
@@ -157,20 +140,8 @@ $(document).ready(function () {
       .parent()
       .data("post");
     deletePost(currentPost.id);
-    console.log(currentPost.id);
   }
 
-  // This function figures out which post we want to edit and takes it to the
-  // Appropriate url
-  // function handlePostEdit() {
-  //   var currentPost = $(this)
-  //     .parent()
-  //     .parent()
-  //     .data("post");
-  //   window.location.href = "/createLunch?post_id=" + currentPost.id;
-  // }
-
-// **************************************
   function handlePostJoin() {
       var currentPost = $(this)
         .parent()
@@ -183,10 +154,7 @@ $(document).ready(function () {
           lunchxId: currentPost.id
       };
       // window.location.href = "/selectLunchToJoin?group_id=" + currentPost.id;
-      $.post("/api/join-lunch", joinData).then(function () {
-        console.log(joinData);
-    });
-
+      $.post("/api/join-lunch", joinData);
     }
 
 
@@ -199,10 +167,22 @@ $(document).ready(function () {
     lunchContainer.append(messageH2);
   }
 
-  // This function handles reloading new posts when the category changes
-  // function handleCategoryChange() {
-  //   var newPostCategory = $(this).val();
-  //   getPosts(newPostCategory);
-  // }
-
 });
+
+
+
+
+
+
+                  //  var id = item.id;
+                  //  var alias = item.alias;
+                  //  var phone = item.display_phone;
+                  //  var image = item.image_url;
+                  //  var name = item.name;
+                  //  var rating = item.rating;
+                  //  var reviewcount = item.review_count;
+                  //  var address = item.location.address1;
+                  //  var city = item.location.city;
+                  //  var state = item.location.state;
+                  //  var zipcode = item.location.zip_code;
+                   // Append our result into our page

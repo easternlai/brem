@@ -38,27 +38,16 @@ $(document).ready(function(){
     });
 });
 
+//Moni scroll code
+$(document).on("click", ".btn-secondary", function (event) {
+    event.preventDefault();
 
-$(document).ready(function () {
-
-    var joinForm = $("form.join");
-    var groupIdInput = $("#groupid-input");
-
-    joinForm.on("submit", function (event) {
-
-        event.preventDefault();
-
-        var joinData = {
-            name: currentUser.email,
-            userxId: currentUser.id,
-            lunchxId: groupIdInput.val()
-        };
-
-        $.post("/api/join-lunch", joinData).then(function () {
-            console.log(joinData);
-        });
-    });
+    $("html, body").animate({
+        scrollTop: $(".lunch-container").offset().top
+    }, 800, function () {
+    })
 });
+
 
 
 // Get the modal

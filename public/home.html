@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lunch App</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <style>
     /* The Modal (background) */
@@ -35,7 +35,8 @@
 
     /* Modal Content/Box */
     .modal-content {
-        background-color: #fefefe;
+        background-color: rgb(202, 54, 75);
+        border-color: #CA364B;
         margin: 15% auto;
         /* 15% from the top and centered */
         padding: 20px;
@@ -61,19 +62,16 @@
 </style>
 
 <body>
-    <header>
-        <!-- <div class="bg-dark collapse show" id="navbarHeader" style>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
                         <h4 class="text-white">About</h4>
-                        <p class="text-muted">
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut
-                            labore et dolore magna aliqua. Neque vitae tempus quam pellentesque nec nam aliquam.
-                            Tincidunt
-                            tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac tortor
-                            dignissim convallis aenean."
+                        <p class="text-muted navText">
+                            "We created LunchBuddy in 2020. Our idea is to encourage people just like you to go
+                            out to eat together. Whether you are vegan or a carnivore you can find a lunch group to
+                            join."
                         </p>
                     </div>
                     <div class="col-sm-4 offset-md-1 py-4">
@@ -86,299 +84,86 @@
                                 <a href="#" class="text-white">Like on Facebook</a>
                             </li>
                             <li>
-                                <a href="#" class="white-text">Email us</a>
+                                <a href="#" class="text-white">Email us</a>
+                            </li>
+                            <li>
+                                <a href="/logout" class="btn btn-logout my-2">Logout</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div> -->
-        <!-- <div class="navbar navbar-dark bg-dark box-shadow">
-            <div class="container d-flex justify-content-between">
-                <a href="#" class="navbar-brand d-flex align-items-center">
-                    <!-- logo -->
-        <!-- <stong>FoodApp</stong>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggler="collapse"
-                    data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="true"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </div> -->
-    </header>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark customNav">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <stong>LunchBuddy</stong>
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
     <main role="main">
-        <section class="jumbotron text-center">
+        <section class="jumbotron customJumbo">
             <div class="container">
-                <h1 class="jumbotron-heading">Welcome to FoodApp</h1>
-                <p class="lead text-muted">
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut
-                    labore et dolore magna aliqua. Neque vitae tempus quam pellentesque nec nam aliquam.
-                    Tincidunt
-                    tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac tortor
-                    dignissim convallis aenean."
-                </p>
-                <p>
-                    <a href="#" class="btn btn-primary my-2">View more groups</a>
-                    <a href="#" class="btn btn-secondary my-2">Sign-up</a>
-                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="img/logo.png" class="imgBlock">
+                    </div>
+                    <div class="col-md-6 textStyle">
+                        <h1 class="jumbotron-heading">Welcome to LunchBuddy</h1>
+                        <p class="lead text-muted">
+                            "You can view lunch groups, join a group or start your own group today!"
+                        </p>
+                        <p>
+                            <a href="#" class="btn btn-secondary my-2">View groups</a>
+                            <button class="btn btn-btn my-2" id="myBtn">Create group</button>
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <!-- Trigger/Open The Modal -->
-        <div align="center">
-            <button align="center" id="myBtn">Create lunch</button>
-            <br>
-        </div>
-        <br>
+        
         <!-- The Modal -->
         <div id="myModal" class="modal">
-
             <!-- Modal content -->
-
             <div class="modal-content">
                 <form align="center" class="create">
                     <span class="close">&times;</span>
                     <label for="">Lunch name</label>
                     <input type="text" name="create-group-form" id="lunch-name-input" placeholder="Lunch Name">
-
-
                     <label for="">Restaurant Name</label>
                     <input type="text" name="create-group-form" id="restaurant-name-input"
                         placeholder="Restaurant Name">
-
                     <label for="">Lunch type</label>
                     <input type="text" name="create-group-form" id="lunch-type-input" placeholder="Type of food">
-
-
                     <button type="submit" class="create-submit">Create!</button>
                 </form>
             </div>
-
         </div>
-
-
-
-        <!-- <div align="center">
-            <button align="center" id="myBtn">Join lunch</button>
-            <br>
-        </div>
-        <br>
-        <!-- The Modal -->
-        <!-- <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-
-            <!-- <div class="modal-content">
-                <span class="close">&times;</span>
-                <form id="cms">
-                    <div class="form-group">
-                        <label for="title">I would like to go to the lunch:</label>
-                        <input placeholder="My name is:" type="text" class="form-control" id="title">
-                        <!--<label for="title">Select User to join:</label>
-						<select class="custom-select" id="user">
-						</select>-->
-                        <!-- <br> -->
-                        <!-- <label for="body">Comment:</label>
-						<textarea placeholder="Post my comment" class="form-control" rows="10" id="body"></textarea> -->
-                        <!-- <div class="form-group">
-                            <label for="category">Select Lunch to join:</label>
-                            <select class="custom-select" id="author">
-                            </select>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-success submit">Submit</button>
-                    </div> --> 
-                <!-- </form>
-            </div> -->
-
-        <!-- </div> --> 
-
-
-
-
-
-
-
-
-        <!-- <form align="center" class="create">
-            
-            <label for="">Lunch name</label>
-            <input type="text" name="create-group-form" id="lunch-name-input" placeholder="Lunch Name">
-            
-            
-            <label for="">Restaurant Name</label>
-            <input type="text" name="create-group-form" id="restaurant-name-input" placeholder="Restaurant Name">
-            
-            <label for="">Lunch type</label>
-            <input type="text" name="create-group-form" id="lunch-type-input" placeholder="Type of food">
-            
-            
-            <label for="">Host</label>
-            <input type="text" name="create-group-form" id="restaurant-host-input" placeholder="Host of the lunch">
-            
-            <button type="submit" class="create-submit">Create!</button>
-        </form> -->
-
-
-        <!-- <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            
-                            <div class="card-body">
-                                <p class="card-text">
-                                    "Tincidunt
-                                    tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac
-                                    tortor
-                                    dignissim convallis aenean.
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            
-                            <div class="card-body">
-                                <p class="card-text">
-                                    "Tincidunt
-                                    tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac
-                                    tortor
-                                    dignissim convallis aenean.
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            
-                            <div class="card-body">
-                                <p class="card-text">
-                                    "Tincidunt
-                                    tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac
-                                    tortor
-                                    dignissim convallis aenean.
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            
-                            <div class="card-body">
-                                <p class="card-text">
-                                    "Tincidunt
-                                    tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac
-                                    tortor
-                                    dignissim convallis aenean.
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            
-                            <div class="card-body">
-                                <p class="card-text">
-                                    "Tincidunt
-                                    tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac
-                                    tortor
-                                    dignissim convallis aenean.
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-        <!-- <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            
-                            <div class="card-body">
-                                <p class="card-text">
-                                    "Tincidunt
-                                    tortor aliquam nulla facilisi cras fermentum. Laoreet non curabitur gravida arcu ac
-                                    tortor
-                                    dignissim convallis aenean.
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-        <!-- <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12 blog-container"></div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+        
         <div class="album py-5 bg-light">
-            <div class="container"></div>
-            <div class="row">
-
-                <div class="col-md-12 lunch-container box-shadow"></div>
-
+            <div class="container">
+                <div class="row lunch-container box-shadow"></div>
             </div>
         </div>
-        </div>
-
-
     </main>
-    <!-- <footer class="text-muted">
-        <div class="container">
+    <footer class="footer">
+        <div class="container footerText">
             <p class="float-right">
-                <a href="#">Back to the top</a>
+                <a href="#" class="text-white">Back to the top</a>
             </p>
             <p>
-                FoodApp is a great tool for your team. Buy FoodApp Pro today!
+                LunchBuddy is a great tool for your team. Buy LunchBuddy Pro today!
             </p>
         </div>
-    </footer> -->
-
-
-
-    <!-- <script src="javascript/javascript.js"></script> -->
+    </footer>
+    
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -387,10 +172,7 @@
         crossorigin="anonymous"></script>
     <script src="js/UICard.js" type="text/javascript"></script>
     <script src="js/home.js" type="text/javascript"></script>
-    <!-- <script src="js/selectLunchToJoin.js" type="text/javascript"></script> -->
-
-
-
+ 
 </body>
 
 </html>

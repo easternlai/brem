@@ -1,4 +1,8 @@
 /* The Modal (background) */
+img {
+  width: 100%;
+}
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -35,3 +39,114 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+.customNav {
+    opacity: 0.9;
+    background-color: rgb(202, 54, 75)!important;
+}
+#navbarToggleExternalContent {
+    background-color: #CA364B!important;
+}
+.navText {
+    color: rgb(205, 234, 239) !important
+}
+.imgBlock {
+    max-width: 350px;    
+}
+.customJumbo {
+    color: rgb(205, 234, 239) !important;
+    background-color: #56565E;
+    opacity: 0.9;
+}
+.jumbotron-heading {
+    color: rgb(202, 54, 75)
+}
+.btn-secondary {
+    background-color: rgb(202, 54, 75);
+    border-color: #CA364B;
+    color: rgb(205, 234, 239);
+}
+
+#myBtn {
+    background-color: rgb(202, 54, 75);
+    border-color: #CA364B;
+}
+.btn-secondary:hover {
+    background-color: rgb(202, 54, 75);
+    border-color: #CA364B;
+}
+.text-muted {
+    color: white!important;
+}
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #56565E;
+    opacity: 0.9;
+    color: white;
+}
+.footerText {
+    margin-top: 10px;
+}
+.navbar-toggler-icon {
+    border-color: #CA364B;
+}
+.model-content {
+    background-color: rgb(202, 54, 75);
+}
+
+.card {
+    border-color: #CA364B;
+}
+
+.bg-light {
+    background-color: rgb(202, 54, 75)!important;
+}
+
+main {
+    background-color: #56565E;
+}
+
+.signUp {
+    background-color: rgb(202, 54, 75)!important;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: bolder;
+}
+
+.logo {
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+}
+
+.logContainer {
+    background-color: rgb(202, 54, 75)!important;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: bolder;
+}
+
+.img-small{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.row {
+    justify-content: center;
+}
+
+body {
+    background-color: #56565E;
+}
+
+.textStyle {
+    align-items: center;
+    display: grid;
+}
