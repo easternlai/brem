@@ -105,7 +105,7 @@ $(document).ready(function () {
       newPostTitle.text(post.name + " ");
       newPostBody.text("Rating: " + data.businesses[0].rating);
       newPostSchedule.text("Restaurant: " + data.businesses[0].name);
-      newPostPeople.text("Created at: " + post.createdAt);
+      newPostPeople.text("Address: " + data.businesses[0].location.address1);
       newPostHost.text("Host: " + currentUser.name);
       newPostType.text("Type: " + post.type);
       newPostBody.text(post.body);
