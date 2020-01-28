@@ -59,6 +59,7 @@ $(document).ready(function () {
     
     var newPostCard = $("<div>");
     var newImage;
+    
     var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + post.restaurant + "&location=94111";
 
     $.ajax({
@@ -123,6 +124,7 @@ $(document).ready(function () {
       newPostCard.append(newPostCardBody);
       newPostCard.data("post", post);
       newPostCardBody.append(newImage);
+      newImage.addClass("img-small");
   
     });
 

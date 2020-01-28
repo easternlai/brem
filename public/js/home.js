@@ -38,6 +38,16 @@ $(document).ready(function(){
     });
 });
 
+//Moni scroll code
+$(document).on("click", ".btn-secondary", function (event) {
+    event.preventDefault();
+
+    $("html, body").animate({
+        scrollTop: $(".lunch-container").offset().top
+    }, 800, function () {
+    })
+});
+
 
 
 // Get the modal
