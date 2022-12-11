@@ -20,7 +20,7 @@
   "homepage": "https://github.com/easternlai/brem#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.17.0",
     "fs": "0.0.1-security",
     "mysql2": "^2.1.0",
